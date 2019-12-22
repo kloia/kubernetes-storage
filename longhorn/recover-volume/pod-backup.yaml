@@ -1,0 +1,21 @@
+--- 
+apiVersion: v1
+kind: Pod
+metadata: 
+  name: mongo-backup-pod
+spec: 
+  containers: 
+    - 
+      image: mongo:3.6
+      name: mongo-backup
+      volumeMounts: 
+        - 
+          mountPath: /data/db
+          name: mongo-backup-volume
+  volumes: 
+    - 
+      name: mongo-backup-volume
+      persistentVolumeClaim: 
+        claimName: mypvc
+
+
